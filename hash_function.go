@@ -29,7 +29,7 @@ func GetHashCode(hashType, message string) (string, error) {
 	case "sha512":
 		hashObject = sha512.New()
 	default:
-		return "", errors.NotFoundHashFunctionError
+		return "", errors.ErrNotFoundHashFunction
 	}
 
 	//输入数据

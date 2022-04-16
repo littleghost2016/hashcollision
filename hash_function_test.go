@@ -2,8 +2,9 @@ package hashcollision
 
 import (
 	"testing"
-	
+
 	"github.com/littleghost2016/hashcollision/errors"
+
 	"github.com/stretchr/testify/assert"
 )
 
@@ -42,14 +43,14 @@ func TestGetHashCode(t *testing.T) {
 		{
 			"someHashFunction",
 			"321",
-			errors.NotFoundHashFunctionError,
+			errors.ErrNotFoundHashFunction,
 		},
 	}
 
 	for _, eachTestCase := range testCase {
 		result, err := GetHashCode(eachTestCase.hashType, message)
 		if err != nil {
-			myAssert.EqualError(errors.NotFoundHashFunctionError, err.Error())
+			myAssert.EqualError(errors.ErrNotFoundHashFunction, err.Error())
 		} else {
 			myAssert.Equalf(eachTestCase.correctTestResult, result, "GetHashCode %s 结果错误", eachTestCase.hashType)
 		}
