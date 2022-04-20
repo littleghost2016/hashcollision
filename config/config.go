@@ -3,6 +3,7 @@ package config
 import (
 	"fmt"
 	"os"
+	"strconv"
 	"sync"
 
 	"github.com/pelletier/go-toml/v2"
@@ -21,8 +22,9 @@ type projectConfig struct {
 
 type redisConfig struct {
 	Enabled  bool   `toml:"enabled"`
-	Address  string `toml:"address"`
+	Ip       string `toml:"ip"`
 	Port     int    `toml:"port"`
+	Address  string `toml:"address"`
 	Password string `toml:"password"`
 }
 
@@ -38,6 +40,7 @@ func loadConfig() {
 			fmt.Println("UnmarshalConfig出错", err)
 		}
 		rc = pc.Redis
+		rc.Address = rc.Ip + ":" + strconv.Itoa(rc.Port)
 	})
 }
 

@@ -21,7 +21,7 @@ func TestGetConfig(t *testing.T) {
 
 	[redis]
 	enabled = true
-	address = "localhost"
+	ip = "localhost"
 	port = 6379
 	password = "123"`)
 	err := os.WriteFile(configFilePath, configContent, 0644)
@@ -32,10 +32,11 @@ func TestGetConfig(t *testing.T) {
 	correctProjectConfig := projectConfig{
 		"hashcollision config title",
 		redisConfig{
-			true,
-			"localhost",
-			6379,
-			"123",
+			Enabled:  true,
+			Ip:       "localhost",
+			Port:     6379,
+			Address:  "",
+			Password: "123",
 		},
 	}
 
