@@ -56,3 +56,14 @@ func TestGetHashCode(t *testing.T) {
 		}
 	}
 }
+
+func TestCompareHashCode(t *testing.T) {
+	myAssert := assert.New(t)
+	inString1 := "abcdefghijklmn"
+	expectString := "abcdefgh"
+	compareResult1 := CompareHashCode(inString1, expectString)
+	myAssert.True(compareResult1)
+	inString2 := "hijklmnabcdegf"
+	compareResult2 := CompareHashCode(inString2, expectString)
+	myAssert.False(compareResult2)
+}

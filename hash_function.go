@@ -41,3 +41,7 @@ func GetHashCode(hashType, message string) (string, error) {
 
 	return hashCode, nil
 }
+
+func CompareHashCode(inString, expectedString string) bool {
+	return inString[:6] == expectedString
+}
